@@ -46,3 +46,29 @@ private extension GameViewController {
 	}
 }
 
+private extension GameViewController {
+
+//--------------------------------------------------------------------------
+// MARK: - Private methods
+//--------------------------------------------------------------------------
+
+	func initializeGame() {
+		gameViewModel.resetGame()
+		self.gameCollectionView.reloadData()
+		self.updateView()
+	}
+
+	func configureView() {
+		self.gameCollectionView.collectionViewLayout = flowLayout
+		self.updateView()
+	}
+
+	func updateView() {
+		self.currentPlayerLabel.text = gameViewModel.currentPlayer.displayName
+	}
+
+	func resetGame() {
+		self.initializeGame()
+	}
+}
+
