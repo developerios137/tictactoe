@@ -19,8 +19,8 @@ class GameCollectionViewCell: UICollectionViewCell {
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		self.layer.borderColor = UIColor.black.cgColor
-		self.layer.borderWidth = 1.0
+		layer.borderColor = UIColor.black.cgColor
+		layer.borderWidth = 1.0
 	}
 
 	//--------------------------------------------------------------------------
@@ -29,10 +29,10 @@ class GameCollectionViewCell: UICollectionViewCell {
 
 	func configureCell(with displayText: String) {
 		playerNameLabel.text = displayText
-		self.backgroundColor = displayText.isEmpty ? .white : .gray
+		backgroundColor = displayText.isEmpty ? .white : .gray
 	}
 
 	func isEmptyCell() -> Bool {
-		return self.playerNameLabel.text?.isEmpty ?? true
+		return playerNameLabel.text?.isEmpty ?? true
 	}
 }

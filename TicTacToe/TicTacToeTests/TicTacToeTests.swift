@@ -65,7 +65,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
 
 	func test_shouldReturn_PlayerX_Won_By_Filling_MiddleRow() {
@@ -84,7 +84,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
 
 	func test_shouldReturn_PlayerX_Won_By_Filling_BottomRow() {
@@ -103,7 +103,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
 
 	func test_shouldReturn_PlayerO_Won_By_Filling_TopRow() {
@@ -123,7 +123,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
 
 	func test_shouldReturn_PlayerO_Won_By_Filling_MiddleRow() {
@@ -143,7 +143,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
 
 	func test_shouldReturn_PlayerO_Won_By_Filling_BottomRow() {
@@ -163,7 +163,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
 
 	//--------------------------------------------------------------------------
@@ -186,7 +186,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
 
 	func test_shouldReturn_PlayerX_Won_By_Filling_SecondColumn() {
@@ -205,7 +205,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
 
 	func test_shouldReturn_PlayerX_Won_By_Filling_ThirdColumn() {
@@ -224,7 +224,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
 
 	func test_shouldReturn_PlayerO_Won_By_Filling_FirstColumn() {
@@ -244,7 +244,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
 
 	func test_shouldReturn_PlayerO_Won_By_Filling_SecondColumn() {
@@ -264,7 +264,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
 
 	func test_shouldReturn_PlayerO_Won_By_Filling_ThirdColumn() {
@@ -284,7 +284,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
 
 	//--------------------------------------------------------------------------
@@ -307,7 +307,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
 
 	func test_shouldReturn_PlayerO_Won_By_Filling_PrimaryDiagonal() {
@@ -327,7 +327,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
 
 	//--------------------------------------------------------------------------
@@ -350,7 +350,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
 
 	func test_shouldReturn_PlayerO_Won_By_Filling_AntiDiagonal() {
@@ -370,7 +370,7 @@ class TicTacToeTests: XCTestCase {
 		})
 
 		XCTAssertEqual(gameStatus, .won)
-		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
 
 

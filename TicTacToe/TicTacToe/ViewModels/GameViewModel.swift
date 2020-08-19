@@ -46,6 +46,7 @@ private extension GameViewModel {
 	//--------------------------------------------------------------------------
 
 	func setupEmptyBoard() {
+		/* The empty board is a place holder to store the occupied position of each players */
 		(0..<gridSize).forEach({ _ in
 			let rows = (0..<gridSize).map({ _ in 0 })
 			boardMap.append(rows)
