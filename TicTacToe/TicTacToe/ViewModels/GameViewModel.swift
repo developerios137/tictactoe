@@ -87,6 +87,10 @@ private extension GameViewModel {
 			return true
 		}
 
+		if isFullAntiDiagonalCompletedByPlayer(position) {
+			return true
+		}
+
 		return false
 	}
 	
@@ -106,5 +110,16 @@ private extension GameViewModel {
 		}
 
 		return primaryDiagonalArray.allSatisfy({ $0 == position.player.rawValue })
+	}
+
+	func isFullAntiDiagonalCompletedByPlayer(_ position: Position) -> Bool {
+		var antiDiagonalArray = [Int]()
+
+		for index in (0..<self.gridSize) {
+			antiDiagonalArray.append(boardMap[index][self.gridSize - index - 1])
+		}
+
+		return antiDiagonalArray.allSatisfy({ $0 == position.player.rawValue
+		})
 	}
 }

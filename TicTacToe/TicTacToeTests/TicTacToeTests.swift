@@ -329,4 +329,27 @@ class TicTacToeTests: XCTestCase {
 		XCTAssertEqual(gameStatus, .won)
 		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
 	}
+
+	//--------------------------------------------------------------------------
+	// MARK: - Winning logic - Primary Diagonals
+	//--------------------------------------------------------------------------
+
+	func test_shouldReturn_PlayerX_Won_By_Filling_AntiDiagonal() {
+		var gameStatus: GameStatus!
+
+		gameViewModel.resetGame()
+
+		let position1 = Position(row: 2, column: 2, player: .player1)
+		let position2 = Position(row: 1, column: 1, player: .player1)
+		let position3 = Position(row: 0, column: 0, player: .player1)
+
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
+		})
+
+		XCTAssertEqual(gameStatus, .won)
+		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+	}
 }
