@@ -30,9 +30,12 @@ extension GameViewModel {
 		self.currentPlayer = currentPlayer == .player1 ? .player2 : .player1
 	}
 
-	func updateBoard(for position: Position) {
+	func updateBoard(for position: Position,
+					 completion: @escaping (_ status: GameStatus) -> Void) {
 		boardMap[position.row][position.column] = position.player.rawValue
 		self.filledTilesCounter += 1
+		let status = self.updateUIAfterMove(for: position)
+		completion(status)
 	}
 }
 
@@ -46,5 +49,38 @@ private extension GameViewModel {
 			let rows = (0..<gridSize).map({ _ in 0 })
 			boardMap.append(rows)
 		})
+	}
+
+	func updateUIAfterMove(for position: Position) -> GameStatus {
+
+		if self.checkIfPlayerWon(position) {
+			return .won
+		}
+
+		if self.filledTilesCounter == self.gridSize * self.gridSize {
+			return .draw
+		}
+
+		self.switchPlayer()
+		return .progress
+	}
+}
+
+private extension GameViewModel {
+	//--------------------------------------------------------------------------
+	// MARK: - Winning logic
+	//--------------------------------------------------------------------------
+
+	func checkIfPlayerWon(_ position: Position) -> Bool {
+
+		if isFullRowCompletedByPlayer(position) {
+			return true
+		}
+
+		return false
+	}
+	
+	func isFullRowCompletedByPlayer(_ position: Position) -> Bool {
+		return boardMap[position.row].allSatisfy({ $0 == position.player.rawValue })
 	}
 }
