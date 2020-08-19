@@ -87,11 +87,11 @@
 		677D077524ED546A00C0BB6C /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				677D077624ED546A00C0BB6C /* AppDelegate.swift */,
 				677D07AA24ED692300C0BB6C /* Extensions */,
 				677D07A324ED5B6E00C0BB6C /* Models */,
 				677D07A024ED588A00C0BB6C /* ViewModels */,
 				677D079F24ED586900C0BB6C /* Views */,
-				677D077624ED546A00C0BB6C /* AppDelegate.swift */,
 				677D077C24ED546A00C0BB6C /* Main.storyboard */,
 				677D077F24ED546C00C0BB6C /* Assets.xcassets */,
 				677D078124ED546C00C0BB6C /* LaunchScreen.storyboard */,

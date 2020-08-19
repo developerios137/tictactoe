@@ -52,6 +52,7 @@ private extension GameViewController {
 	//--------------------------------------------------------------------------
 
 	@IBAction func gridSizeButtonTapped(_ sender: Any) {
+		showGridSizeSeletionSheet()
 	}
 
 	@IBAction func resetButtonTapped(_ sender: Any) {
@@ -93,6 +94,26 @@ private extension GameViewController {
 			}
 		})
 		present(alertController, animated: true, completion: nil)
+	}
+
+	func showGridSizeSeletionSheet() {
+		let arraySelect = (3...8).map({ String("\($0)x\($0)") }) // Grid should start with min size of 3x3
+
+		let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+
+		for name in arraySelect {
+			alert.addAction(UIAlertAction(title: name, style: .default, handler: { [weak self] action in
+				if let index = alert.actions.firstIndex(of: action) {
+					self?.gameViewModel.gridSize = index + 3
+					self?.resetGame()
+				}
+
+			}))
+		}
+
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(_) in }))
+
+		self.present(alert, animated: true, completion: nil)
 	}
 }
 
