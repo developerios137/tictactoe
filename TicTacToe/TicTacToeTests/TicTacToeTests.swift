@@ -226,4 +226,64 @@ class TicTacToeTests: XCTestCase {
 		XCTAssertEqual(gameStatus, .won)
 		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
 	}
+
+	func test_shouldReturn_PlayerO_Won_By_Filling_FirstColumn() {
+		var gameStatus: GameStatus!
+
+		gameViewModel.resetGame()
+		gameViewModel.switchPlayer()
+
+		let position1 = Position(row: 0, column: 0, player: .player2)
+		let position2 = Position(row: 1, column: 0, player: .player2)
+		let position3 = Position(row: 2, column: 0, player: .player2)
+
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
+		})
+
+		XCTAssertEqual(gameStatus, .won)
+		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+	}
+
+	func test_shouldReturn_PlayerO_Won_By_Filling_SecondColumn() {
+		var gameStatus: GameStatus!
+
+		gameViewModel.resetGame()
+		gameViewModel.switchPlayer()
+
+		let position1 = Position(row: 0, column: 1, player: .player2)
+		let position2 = Position(row: 1, column: 1, player: .player2)
+		let position3 = Position(row: 2, column: 1, player: .player2)
+
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
+		})
+
+		XCTAssertEqual(gameStatus, .won)
+		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+	}
+
+	func test_shouldReturn_PlayerO_Won_By_Filling_ThirdColumn() {
+		var gameStatus: GameStatus!
+
+		gameViewModel.resetGame()
+		gameViewModel.switchPlayer()
+
+		let position1 = Position(row: 0, column: 2, player: .player2)
+		let position2 = Position(row: 1, column: 2, player: .player2)
+		let position3 = Position(row: 2, column: 2, player: .player2)
+
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
+		})
+
+		XCTAssertEqual(gameStatus, .won)
+		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+	}
 }
