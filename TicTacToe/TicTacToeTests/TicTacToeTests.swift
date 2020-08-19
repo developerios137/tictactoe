@@ -352,4 +352,55 @@ class TicTacToeTests: XCTestCase {
 		XCTAssertEqual(gameStatus, .won)
 		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
 	}
+
+	func test_shouldReturn_PlayerO_Won_By_Filling_AntiDiagonal() {
+		var gameStatus: GameStatus!
+
+		gameViewModel.resetGame()
+		gameViewModel.switchPlayer()
+
+		let position1 = Position(row: 2, column: 2, player: .player2)
+		let position2 = Position(row: 1, column: 1, player: .player2)
+		let position3 = Position(row: 0, column: 0, player: .player2)
+
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
+		})
+
+		XCTAssertEqual(gameStatus, .won)
+		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "O")
+	}
+
+
+	//--------------------------------------------------------------------------
+	// MARK: - Draw game
+	//--------------------------------------------------------------------------
+
+	func test_ShouldSetGameDraw_When_AllRowsAreOccupiedButNoWin() {
+		var gameStatus: GameStatus!
+
+		gameViewModel.resetGame()
+
+		let position1 = Position(row: 0, column: 0, player: .player1)
+		let position2 = Position(row: 0, column: 1, player: .player2)
+		let position3 = Position(row: 0, column: 2, player: .player1)
+		let position4 = Position(row: 1, column: 0, player: .player2)
+		let position5 = Position(row: 1, column: 1, player: .player1)
+		let position6 = Position(row: 1, column: 2, player: .player2)
+		let position7 = Position(row: 2, column: 0, player: .player1)
+		let position8 = Position(row: 2, column: 1, player: .player1)
+		let position9 = Position(row: 2, column: 2, player: .player2)
+
+		[position1, position2, position3,
+		 position4, position5, position6,
+		 position7, position8, position9].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
+		})
+
+		XCTAssertEqual(gameStatus, .draw)
+	}
 }
