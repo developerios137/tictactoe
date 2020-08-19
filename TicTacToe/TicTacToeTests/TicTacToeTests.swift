@@ -42,13 +42,51 @@ class TicTacToeTests: XCTestCase {
 	}
 
 	func test_shouldReturn_PlayerX_Won_By_Filling_TopRow() {
+		var gameStatus: GameStatus!
+
 		gameViewModel.resetGame()
 
 		let position1 = Position(row: 0, column: 0, player: .player1)
 		let position2 = Position(row: 0, column: 1, player: .player1)
 		let position3 = Position(row: 0, column: 2, player: .player1)
+
+		gameViewModel.updateBoard(for: position1, completion: {_ in })
+		gameViewModel.updateBoard(for: position2, completion: {_ in })
+		gameViewModel.updateBoard(for: position3, completion: { status in
+			gameStatus = status
+		})
+
+		XCTAssertEqual(gameStatus, .won)
+		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+	}
+
+	func test_shouldReturn_PlayerX_Won_By_Filling_MiddleRow() {
 		var gameStatus: GameStatus!
 
+		gameViewModel.resetGame()
+
+		let position1 = Position(row: 1, column: 0, player: .player1)
+		let position2 = Position(row: 1, column: 1, player: .player1)
+		let position3 = Position(row: 1, column: 2, player: .player1)
+
+		gameViewModel.updateBoard(for: position1, completion: {_ in })
+		gameViewModel.updateBoard(for: position2, completion: {_ in })
+		gameViewModel.updateBoard(for: position3, completion: { status in
+			gameStatus = status
+		})
+
+		XCTAssertEqual(gameStatus, .won)
+		XCTAssertEqual(self.gameViewModel.currentPlayer.displayName, "X")
+	}
+
+	func test_shouldReturn_PlayerX_Won_By_Filling_BottomRow() {
+		var gameStatus: GameStatus!
+
+		gameViewModel.resetGame()
+
+		let position1 = Position(row: 2, column: 0, player: .player1)
+		let position2 = Position(row: 2, column: 1, player: .player1)
+		let position3 = Position(row: 2, column: 2, player: .player1)
 		gameViewModel.updateBoard(for: position1, completion: {_ in })
 		gameViewModel.updateBoard(for: position2, completion: {_ in })
 		gameViewModel.updateBoard(for: position3, completion: { status in
