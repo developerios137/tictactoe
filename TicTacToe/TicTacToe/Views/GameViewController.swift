@@ -1,5 +1,10 @@
 import UIKit
 
+fileprivate struct Constants {
+	static let gameCellReuseIdentifier = "GameCollectionViewCell"
+	static let emptyString = ""
+}
+
 class GameViewController: UIViewController {
 
 	//--------------------------------------------------------------------------
@@ -30,6 +35,8 @@ class GameViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.configureView()
+		self.initializeGame()
 	}
 }
 
@@ -72,3 +79,55 @@ private extension GameViewController {
 	}
 }
 
+extension GameViewController: UICollectionViewDataSource {
+
+	//--------------------------------------------------------------------------
+	// MARK: - CollectionView Data source methods
+	//--------------------------------------------------------------------------
+
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		gameViewModel.gridSize
+	}
+
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		gameViewModel.gridSize
+	}
+
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.gameCellReuseIdentifier, for: indexPath) as! GameCollectionViewCell
+		cell.configureCell(with: Constants.emptyString)
+		return cell
+	}
+}
+
+extension GameViewController: UICollectionViewDelegate {
+
+	//--------------------------------------------------------------------------
+	// MARK: - Collection view delegate methods
+	//--------------------------------------------------------------------------
+
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let cell = collectionView.cellForItem(at: indexPath) as! GameCollectionViewCell
+
+		guard cell.isEmptyCell() else {
+			return
+		}
+
+		let position = Position(row: indexPath.row, column: indexPath.section, player: gameViewModel.currentPlayer)
+
+		cell.configureCell(with: gameViewModel.currentPlayer.displayName)
+
+		gameViewModel.updateBoard(for: position) { [weak self] status in
+			switch status {
+				case .won:
+					//TODO: handle winning
+					break
+				case .draw:
+					//TODO: handle draw
+					break
+				case .progress:
+					self?.updateView()
+			}
+		}
+	}
+}

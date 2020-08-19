@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-S4-PuQ">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-S4-PuQ">
                                 <rect key="frame" x="0.0" y="50" width="320" height="518"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a98-Is-rW5">
                                     <size key="itemSize" width="50" height="50"/>
@@ -28,13 +27,30 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="l2p-Jf-DBV">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GameCollectionViewCell" id="l2p-Jf-DBV" customClass="GameCollectionViewCell" customModule="TicTacToe" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xax-9H-Oh2">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePx-GP-tAQ">
+                                                    <rect key="frame" x="13" y="0.0" width="24.5" height="40"/>
+                                                    <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="36"/>
+                                                    <color key="textColor" red="0.72941176470000002" green="0.16078431369999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ePx-GP-tAQ" firstAttribute="centerX" secondItem="Xax-9H-Oh2" secondAttribute="centerX" id="9Nk-bo-j0H"/>
+                                                <constraint firstAttribute="bottom" secondItem="ePx-GP-tAQ" secondAttribute="bottom" id="9sW-LH-tIl"/>
+                                                <constraint firstItem="ePx-GP-tAQ" firstAttribute="top" secondItem="Xax-9H-Oh2" secondAttribute="top" id="j2S-ac-9hL"/>
+                                                <constraint firstItem="ePx-GP-tAQ" firstAttribute="centerY" secondItem="Xax-9H-Oh2" secondAttribute="centerY" id="yRa-sw-nda"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="playerNameLabel" destination="ePx-GP-tAQ" id="PuN-mh-SlT"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -79,8 +95,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Ezj-S4-PuQ" firstAttribute="top" secondItem="z1d-3f-y1F" secondAttribute="bottom" constant="6" id="1FR-J4-CDF"/>
                             <constraint firstItem="z1d-3f-y1F" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="4oP-ce-Eeh"/>
+                            <constraint firstItem="Ezj-S4-PuQ" firstAttribute="trailing" secondItem="z1d-3f-y1F" secondAttribute="trailing" id="51c-UR-z2F"/>
                             <constraint firstItem="z1d-3f-y1F" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BIO-a3-pGi"/>
+                            <constraint firstItem="Ezj-S4-PuQ" firstAttribute="leading" secondItem="z1d-3f-y1F" secondAttribute="leading" id="V38-wX-1It"/>
+                            <constraint firstItem="Ezj-S4-PuQ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jj7-bx-EtG"/>
                             <constraint firstItem="z1d-3f-y1F" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="x7P-VC-B2e"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

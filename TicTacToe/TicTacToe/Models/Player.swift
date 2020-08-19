@@ -1,8 +1,8 @@
 import Foundation
 
 enum Player: Int {
-	case player1
-	case player2
+	case player1 = 1
+	case player2 = 2
 
 	var displayName: String {
 		switch self {
