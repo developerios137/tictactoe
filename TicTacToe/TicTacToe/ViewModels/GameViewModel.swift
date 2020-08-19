@@ -83,6 +83,10 @@ private extension GameViewModel {
 			return true
 		}
 
+		if isFullPrimaryDiagonalCompletedByPlayer(position) {
+			return true
+		}
+
 		return false
 	}
 	
@@ -92,5 +96,15 @@ private extension GameViewModel {
 
 	func isFullColumnCompletedByPlayer(_ position: Position) -> Bool {
 		return boardMap[column: position.column].allSatisfy({ $0 == position.player.rawValue })
+	}
+
+	func isFullPrimaryDiagonalCompletedByPlayer(_ position: Position) -> Bool {
+		var primaryDiagonalArray = [Int]()
+
+		for index in (0..<self.gridSize) {
+			primaryDiagonalArray.append(boardMap[index][index])
+		}
+
+		return primaryDiagonalArray.allSatisfy({ $0 == position.player.rawValue })
 	}
 }
