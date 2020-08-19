@@ -40,6 +40,7 @@ extension GameViewModel {
 }
 
 private extension GameViewModel {
+
 	//--------------------------------------------------------------------------
 	// MARK: - Private Methods
 	//--------------------------------------------------------------------------
@@ -67,6 +68,7 @@ private extension GameViewModel {
 }
 
 private extension GameViewModel {
+
 	//--------------------------------------------------------------------------
 	// MARK: - Winning logic
 	//--------------------------------------------------------------------------
@@ -77,10 +79,18 @@ private extension GameViewModel {
 			return true
 		}
 
+		if isFullColumnCompletedByPlayer(position) {
+			return true
+		}
+
 		return false
 	}
 	
 	func isFullRowCompletedByPlayer(_ position: Position) -> Bool {
 		return boardMap[position.row].allSatisfy({ $0 == position.player.rawValue })
+	}
+
+	func isFullColumnCompletedByPlayer(_ position: Position) -> Bool {
+		return boardMap[column: position.column].allSatisfy({ $0 == position.player.rawValue })
 	}
 }
