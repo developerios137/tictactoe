@@ -30,4 +30,11 @@ class TicTacToeTests: XCTestCase {
 		gameViewModel.resetGame()
 		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
 	}
+
+	func test_shouldIncrease_filledTileCounter_On_Board_Update() {
+		gameViewModel.resetGame()
+		let position = Position(row: 0, column: 0, player: .player1)
+		gameViewModel.updateBoard(for: position)
+		XCTAssertEqual(gameViewModel.filledTilesCounter, 1)
+	}
 }
