@@ -50,10 +50,10 @@ class TicTacToeTests: XCTestCase {
 		let position2 = Position(row: 0, column: 1, player: .player1)
 		let position3 = Position(row: 0, column: 2, player: .player1)
 
-		gameViewModel.updateBoard(for: position1, completion: {_ in })
-		gameViewModel.updateBoard(for: position2, completion: {_ in })
-		gameViewModel.updateBoard(for: position3, completion: { status in
-			gameStatus = status
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
 		})
 
 		XCTAssertEqual(gameStatus, .won)
@@ -69,10 +69,10 @@ class TicTacToeTests: XCTestCase {
 		let position2 = Position(row: 1, column: 1, player: .player1)
 		let position3 = Position(row: 1, column: 2, player: .player1)
 
-		gameViewModel.updateBoard(for: position1, completion: {_ in })
-		gameViewModel.updateBoard(for: position2, completion: {_ in })
-		gameViewModel.updateBoard(for: position3, completion: { status in
-			gameStatus = status
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
 		})
 
 		XCTAssertEqual(gameStatus, .won)
@@ -87,10 +87,11 @@ class TicTacToeTests: XCTestCase {
 		let position1 = Position(row: 2, column: 0, player: .player1)
 		let position2 = Position(row: 2, column: 1, player: .player1)
 		let position3 = Position(row: 2, column: 2, player: .player1)
-		gameViewModel.updateBoard(for: position1, completion: {_ in })
-		gameViewModel.updateBoard(for: position2, completion: {_ in })
-		gameViewModel.updateBoard(for: position3, completion: { status in
-			gameStatus = status
+
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
 		})
 
 		XCTAssertEqual(gameStatus, .won)
@@ -107,10 +108,10 @@ class TicTacToeTests: XCTestCase {
 		let position2 = Position(row: 0, column: 1, player: .player2)
 		let position3 = Position(row: 0, column: 2, player: .player2)
 
-		gameViewModel.updateBoard(for: position1, completion: {_ in })
-		gameViewModel.updateBoard(for: position2, completion: {_ in })
-		gameViewModel.updateBoard(for: position3, completion: { status in
-			gameStatus = status
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
 		})
 
 		XCTAssertEqual(gameStatus, .won)
@@ -127,10 +128,10 @@ class TicTacToeTests: XCTestCase {
 		let position2 = Position(row: 1, column: 1, player: .player2)
 		let position3 = Position(row: 1, column: 2, player: .player2)
 
-		gameViewModel.updateBoard(for: position1, completion: {_ in })
-		gameViewModel.updateBoard(for: position2, completion: {_ in })
-		gameViewModel.updateBoard(for: position3, completion: { status in
-			gameStatus = status
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
 		})
 
 		XCTAssertEqual(gameStatus, .won)
@@ -146,10 +147,11 @@ class TicTacToeTests: XCTestCase {
 		let position1 = Position(row: 2, column: 0, player: .player2)
 		let position2 = Position(row: 2, column: 1, player: .player2)
 		let position3 = Position(row: 2, column: 2, player: .player2)
-		gameViewModel.updateBoard(for: position1, completion: {_ in })
-		gameViewModel.updateBoard(for: position2, completion: {_ in })
-		gameViewModel.updateBoard(for: position3, completion: { status in
-			gameStatus = status
+
+		[position1, position2, position3].forEach({ position in
+			gameViewModel.updateBoard(for: position, completion: { status in
+				gameStatus = status
+			})
 		})
 
 		XCTAssertEqual(gameStatus, .won)
