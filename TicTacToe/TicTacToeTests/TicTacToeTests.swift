@@ -25,4 +25,9 @@ class TicTacToeTests: XCTestCase {
 		gameViewModel.switchPlayer()
 		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "O")
 	}
+
+	func test_shouldReturn_PlayerX_On_GameReset() {
+		gameViewModel.resetGame()
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
+	}
 }

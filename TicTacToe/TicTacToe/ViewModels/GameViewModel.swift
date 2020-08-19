@@ -6,6 +6,15 @@ class GameViewModel {
 }
 
 extension GameViewModel {
+
+	//--------------------------------------------------------------------------
+	// MARK: - Methods
+	//--------------------------------------------------------------------------
+
+	func resetGame() {
+		self.currentPlayer = .player1
+	}
+
 	func switchPlayer() {
 		self.currentPlayer = currentPlayer == .player1 ? .player2 : .player1
 	}
