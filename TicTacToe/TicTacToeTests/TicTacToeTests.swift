@@ -16,4 +16,8 @@ class TicTacToeTests: XCTestCase {
 	func test_shouldReturn_GridSize3_On_Start() {
 		XCTAssertEqual(gameViewModel.gridSize, 3)
     }
+
+	func test_shouldReturn_PlayerX_On_Start() {
+		XCTAssertEqual(gameViewModel.currentPlayer.displayName, "X")
+	}
 }
