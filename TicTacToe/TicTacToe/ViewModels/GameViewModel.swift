@@ -120,7 +120,6 @@ private extension GameViewModel {
 			antiDiagonalArray.append(boardMap[index][gridSize - index - 1])
 		}
 
-		return antiDiagonalArray.allSatisfy({ $0 == position.player.rawValue
-		})
+		return antiDiagonalArray.allSatisfy({ $0 == position.player.rawValue })
 	}
 }
