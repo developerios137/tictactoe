@@ -1,8 +1,13 @@
 import UIKit
 
+typealias AnyFunction = () -> Void
+
 fileprivate struct Constants {
 	static let gameCellReuseIdentifier = "GameCollectionViewCell"
 	static let emptyString = ""
+	static let alertGameEnd = "Game Over"
+	static let alertGameDraw = "It's a draw"
+	static let alertRestart = "Ok Restart"
 }
 
 class GameViewController: UIViewController {
@@ -35,8 +40,8 @@ class GameViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.configureView()
-		self.initializeGame()
+		configureView()
+		initializeGame()
 	}
 }
 
@@ -50,6 +55,7 @@ private extension GameViewController {
 	}
 
 	@IBAction func resetButtonTapped(_ sender: Any) {
+		resetGame()
 	}
 }
 
@@ -61,21 +67,32 @@ private extension GameViewController {
 
 	func initializeGame() {
 		gameViewModel.resetGame()
-		self.gameCollectionView.reloadData()
-		self.updateView()
+		gameCollectionView.reloadData()
+		updateView()
 	}
 
 	func configureView() {
-		self.gameCollectionView.collectionViewLayout = flowLayout
-		self.updateView()
+		gameCollectionView.collectionViewLayout = flowLayout
+		updateView()
 	}
 
 	func updateView() {
-		self.currentPlayerLabel.text = gameViewModel.currentPlayer.displayName
+		currentPlayerLabel.text = gameViewModel.currentPlayer.displayName
 	}
 
 	func resetGame() {
-		self.initializeGame()
+		initializeGame()
+	}
+
+	func showAlertMessage(_ title: String,_ message: String?, _ actionButtonTitle: String, actionSelector:AnyFunction?) {
+		let alertController = UIAlertController(title: title, message: message, preferredStyle:UIAlertController.Style.alert)
+		alertController.addAction(UIAlertAction(title: actionButtonTitle, style: UIAlertAction.Style.default)
+		{ action -> Void in
+			if let act = actionSelector {
+				act()
+			}
+		})
+		present(alertController, animated: true, completion: nil)
 	}
 }
 
@@ -120,11 +137,9 @@ extension GameViewController: UICollectionViewDelegate {
 		gameViewModel.updateBoard(for: position) { [weak self] status in
 			switch status {
 				case .won:
-					//TODO: handle winning
-					break
+					self?.showAlertMessage(Constants.alertGameEnd, self?.gameViewModel.currentPlayer.winningMessage, Constants.alertRestart, actionSelector: self?.resetGame)
 				case .draw:
-					//TODO: handle draw
-					break
+					self?.showAlertMessage(Constants.alertGameEnd, Constants.alertGameDraw, Constants.alertRestart, actionSelector: self?.resetGame)
 				case .progress:
 					self?.updateView()
 			}

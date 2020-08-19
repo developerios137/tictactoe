@@ -20,21 +20,21 @@ extension GameViewModel {
 	//--------------------------------------------------------------------------
 
 	func resetGame() {
-		self.currentPlayer = .player1
-		self.filledTilesCounter = 0
+		currentPlayer = .player1
+		filledTilesCounter = 0
 		boardMap.removeAll()
-		self.setupEmptyBoard()
+		setupEmptyBoard()
 	}
 
 	func switchPlayer() {
-		self.currentPlayer = currentPlayer == .player1 ? .player2 : .player1
+		currentPlayer = currentPlayer == .player1 ? .player2 : .player1
 	}
 
 	func updateBoard(for position: Position,
 					 completion: @escaping (_ status: GameStatus) -> Void) {
 		boardMap[position.row][position.column] = position.player.rawValue
-		self.filledTilesCounter += 1
-		let status = self.updateUIAfterMove(for: position)
+		filledTilesCounter += 1
+		let status = updateUIAfterMove(for: position)
 		completion(status)
 	}
 }
@@ -54,15 +54,15 @@ private extension GameViewModel {
 
 	func updateUIAfterMove(for position: Position) -> GameStatus {
 
-		if self.checkIfPlayerWon(position) {
+		if checkIfPlayerWon(position) {
 			return .won
 		}
 
-		if self.filledTilesCounter == self.gridSize * self.gridSize {
+		if filledTilesCounter == gridSize * gridSize {
 			return .draw
 		}
 
-		self.switchPlayer()
+		switchPlayer()
 		return .progress
 	}
 }
@@ -105,7 +105,7 @@ private extension GameViewModel {
 	func isFullPrimaryDiagonalCompletedByPlayer(_ position: Position) -> Bool {
 		var primaryDiagonalArray = [Int]()
 
-		for index in (0..<self.gridSize) {
+		for index in (0..<gridSize) {
 			primaryDiagonalArray.append(boardMap[index][index])
 		}
 
@@ -115,8 +115,8 @@ private extension GameViewModel {
 	func isFullAntiDiagonalCompletedByPlayer(_ position: Position) -> Bool {
 		var antiDiagonalArray = [Int]()
 
-		for index in (0..<self.gridSize) {
-			antiDiagonalArray.append(boardMap[index][self.gridSize - index - 1])
+		for index in (0..<gridSize) {
+			antiDiagonalArray.append(boardMap[index][gridSize - index - 1])
 		}
 
 		return antiDiagonalArray.allSatisfy({ $0 == position.player.rawValue
